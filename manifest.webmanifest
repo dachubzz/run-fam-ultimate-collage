@@ -1,0 +1,36 @@
+{
+  "name": "Flappy Fam: Tap or Cap",
+  "short_name": "Flappy Fam",
+  "description": "Choose your chaos creature and flap to victory. Meme sprites, SFX, and leaderboards (local).",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0e0e0f",
+  "theme_color": "#ffd54f",
+  "icons": [
+    {
+      "src": "icon-64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Flappy Fam: Tap or Cap</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="theme-color" content="#ffd54f">
+<meta property="og:title" content="Flappy Fam: Tap or Cap">
+<meta property="og:description" content="Choose your chaos creature and flap to victory. Meme sprites, SFX, and leaderboards.">
+<meta property="og:image" content="og-image.jpg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <div id="menu" class="screen active">
+      <h1>Flappy Fam: <span>Tap or Cap</span></h1>
+      <p class="subtitle">Pick your chaos creature</p>
+      <div class="chars">
+        <button class="char" data-id="chicken"><canvas width="96" height="96"></canvas><span>Chick’n Nuggy</span></button>
+        <button class="char" data-id="frog"><canvas width="96" height="96"></canvas><span>Lil’ Ribbz</span></button>
+        <button class="char" data-id="cat"><canvas width="96" height="96"></canvas><span>Zoomie</span></button>
+        <button class="char" data-id="duck"><canvas width="96" height="96"></canvas><span>Quackhead</span></button>
+        <button class="char" data-id="pig"><canvas width="96" height="96"></canvas><span>Snaccident</span></button>
+      </div>
+
+      <div class="row">
+        <label>Difficulty:
+          <select id="diff">
+            <option value="easy">Easy</option>
+            <option value="normal" selected>Normal</option>
+            <option value="hard">Hard</option>
+          </select>
+        </label>
+        <label><input type="checkbox" id="muteChk"> Mute</label>
+        <label><input type="checkbox" id="hapticsChk" checked> Haptics</label>
+      </div>
+
+      <div class="scores">
+        <div>Best: <span id="bestScore">0</span></div>
+        <div>Last: <span id="lastScore">0</span></div>
+      </div>
+
+      <button id="startBtn" class="primary" disabled>Start</button>
+      <button id="installBtn" class="ghost" hidden>Install app</button>
+      <p class="hint">Tap screen or press Space to flap</p>
+      <details class="howto">
+        <summary>How to play</summary>
+        <ul>
+          <li>Tap/click/space to flap</li>
+          <li>Pass obstacles to score</li>
+          <li>Crash = back to menu (your best is saved)</li>
+        </ul>
+      </details>
+    </div>
+
+    <div id="game" class="screen">
+      <canvas id="canvas" width="360" height="520" aria-label="Flappy Fam game canvas"></canvas>
+      <div id="hud"><span id="score">0</span></div>
+      <button id="pauseBtn" class="hudbtn">⏸</button>
+      <div id="pauseOverlay" class="overlay">
+        <div class="panel">
+          <h3>Paused</h3>
+          <label class="toggle"><input type="checkbox" id="muteChkGame"> Mute sounds</label>
+          <div class="btns">
+            <button id="resumeBtn" class="primary">Resume</button>
+            <button id="restartBtn">Restart</button>
+            <button id="toMenuBtn">Main menu</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="post" class="screen">
+      <h2>you crashed 💥</h2>
+      <p>Score: <b id="endScore">0</b> • Best: <b id="endBest">0</b></p>
+      <div class="buttons">
+        <button id="againBtn" class="primary">Play again</button>
+        <button id="menuBtn">Main menu</button>
+      </div>
+      <div class="leader">
+        <h3>Local Leaderboard (Top 10)</h3>
+        <ol id="board"></ol>
+      </div>
+      <p class="share">Share your score: <input id="shareUrl" readonly></p>
+    </div>
+  </div>
+  <script src="game.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js');
+      });
+    }
+  </script>
+</body>
+</html>
